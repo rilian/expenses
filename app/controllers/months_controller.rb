@@ -1,5 +1,5 @@
 class MonthsController < ApplicationController
   def index
-    @months = Month
+    @months = Month.all
   end
 end

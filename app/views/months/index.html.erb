@@ -1,1 +1,51 @@
-Months
+<h1>
+  <%= link_to 'New Month', new_month_path, class: 'btn btn-primary' %>
+  Months
+  <small>list of all tracked month</small>
+</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Result</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @months.each do |month| %>
+      <tr>
+        <td>
+          <p>
+            <%= month.id %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= link_to month.name, edit_month_path(month) %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= month.result %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-primary' %>
+          </p>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Sum Planned</th>
+    <th>Sum Real</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+</table>
