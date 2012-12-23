@@ -1,0 +1,49 @@
+<h1>
+  <%= link_to 'Edit', edit_expense_path(@expense), class: 'btn btn-primary' %>
+  <%= @expense.name %>
+</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Month</th>
+    <th>Planned sum</th>
+    <th>Real sum</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @expense.month_expenses.each do |month_expense| %>
+      <tr>
+        <td>
+          <p>
+            <%= link_to month_expense.month.name, month_path(month_expense.month) %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= month_expense.sum_planned %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= month_expense.sum_real %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= month_expense.desc %>
+          </p>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+  <thead>
+  <tr>
+    <th>Month</th>
+    <th>Planned sum</th>
+    <th>Real sum</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+</table>
