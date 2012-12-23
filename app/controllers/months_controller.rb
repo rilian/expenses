@@ -1,5 +1,5 @@
 class MonthsController < ApplicationController
   def index
-    @months = Month.all
+    @months = Month.includes(:month_expenses)
   end
 end
