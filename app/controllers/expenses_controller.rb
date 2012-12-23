@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
   def index
-    @expenses = Expenses
+    @expenses = Expense.all
   end
 end

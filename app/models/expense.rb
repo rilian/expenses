@@ -6,6 +6,7 @@ class Expense < ActiveRecord::Base
   # Before, after callbacks
 
   # Default scopes, default values (e.g. self.per_page =)
+  default_scope order('weight DESC')
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   has_many :month_expenses, dependent: :destroy, inverse_of: :expense
