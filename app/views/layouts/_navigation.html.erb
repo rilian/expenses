@@ -1,0 +1,13 @@
+<%= link_to "Expenses", root_path, class: 'brand' %>
+
+<div class="nav-collapse collapse">
+  <ul class="nav pull-left">
+    <li class="<%= current_page?(months_path) ? 'active' : '' %>">
+      <%= link_to 'Months', months_path %>
+    </li>
+    <li class="<%= current_page?(expenses_path) ? 'active' : '' %>">
+      <%= link_to('Expenses', expenses_path) %>
+    </li>
+  </ul>
+</div>
+
