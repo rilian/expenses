@@ -8,6 +8,7 @@ class MonthsController < ApplicationController
   end
 
   def new
+    @month = Month.new
   end
 
   def create
@@ -19,9 +20,11 @@ class MonthsController < ApplicationController
   end
 
   def edit
+    @month = Month.find(params[:id])
   end
 
   def update
+    @month = Month.find(params[:id])
     if @month.update_attributes(params[:month])
       redirect_to month_path(@month)
     else

@@ -9,6 +9,7 @@ class ExpensesController < ApplicationController
   end
 
   def new
+    @expense = Expense.new
   end
 
   def create
@@ -20,9 +21,11 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    @expense = Expense.find(params[:id])
   end
 
   def update
+    @expense = Expense.find(params[:id])
     if @expense.update_attributes(params[:expense])
       redirect_to expense_path(@expense)
     else
