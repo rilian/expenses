@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20121223110653) do
     t.integer "expense_id",                  :null => false
     t.integer "month_id",                    :null => false
     t.string  "desc",        :default => "", :null => false
-    t.integer "sum_planned", :default => 0,  :null => false
     t.integer "sum_real",    :default => 0,  :null => false
   end
 

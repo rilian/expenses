@@ -12,10 +12,12 @@ class Month < ActiveRecord::Base
   has_many :month_expenses, dependent: :destroy, inverse_of: :month
 
   # Validations: presence > by type > validates
-  validates_presence_of :name, :result
+  validates_presence_of :name
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :name, :result
+  attr_accessible :name, :result, :month_expenses_attributes
+
+  accepts_nested_attributes_for :month_expenses
 
   # Model dictionaries, state machine
 

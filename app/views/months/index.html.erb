@@ -9,7 +9,6 @@
   <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>Planned expenses sum</th>
     <th>Real expenses sum</th>
     <th>Actions</th>
   </tr>
@@ -29,11 +28,6 @@
         </td>
         <td>
           <p>
-            <%= month.month_expenses.sum('month_expenses.sum_planned') %>
-          </p>
-        </td>
-        <td>
-          <p>
             <%= month.month_expenses.sum('month_expenses.sum_real') %>
           </p>
         </td>
@@ -49,7 +43,6 @@
   <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>Planned expenses sum</th>
     <th>Real expenses sum</th>
     <th>Actions</th>
   </tr>

@@ -7,7 +7,6 @@
   <thead>
   <tr>
     <th>Month</th>
-    <th>Planned sum</th>
     <th>Real sum</th>
     <th>Description</th>
   </tr>
@@ -18,11 +17,6 @@
         <td>
           <p>
             <%= link_to month_expense.month.name, month_path(month_expense.month) %>
-          </p>
-        </td>
-        <td>
-          <p>
-            <%= month_expense.sum_planned %>
           </p>
         </td>
         <td>
@@ -41,7 +35,6 @@
   <thead>
   <tr>
     <th>Month</th>
-    <th>Planned sum</th>
     <th>Real sum</th>
     <th>Description</th>
   </tr>
