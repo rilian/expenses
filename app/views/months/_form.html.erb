@@ -1,6 +1,32 @@
 <%= simple_form_for @month, html: { class: 'form-horizontal' } do |f| %>
-    <%= f.input :name %>
-    <%= f.input :result %>
-    <br/>
+  <%= f.input :name, input_html: { class: "input-xxlarge" } %>
+  <%= f.input :result, as: :text, input_html: { rows: 2, cols: 40, class: "input-xxlarge" } %>
+  <br/>
+  <%= f.button :submit, class: 'btn-primary' %>
+
+  <% if @month.month_expenses.size > 0 %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Expense</th>
+        <th>Sum</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= f.simple_fields_for :month_expenses do |month_expense| %>
+        <tr>
+          <td><%= month_expense.object.expense.name %></td>
+          <td><%= month_expense.input :sum_real, as: :integer, label: false %></td>
+          <td><%= month_expense.input :desc, input_html: { class: "input-xxlarge" }, label: false %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    <table>
     <%= f.button :submit, class: 'btn-primary' %>
+  <% else %>
+    <br/>
+    <br/>
+    <p>Note: Expenses will be generated once month is successfully created</p>
+  <% end %>
 <% end %>
