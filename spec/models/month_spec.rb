@@ -17,6 +17,7 @@ describe Month do
     it { should allow_mass_assignment_of(:month_expenses_attributes) }
 
     it { should have_many(:month_expenses).dependent(:destroy) }
+    it { should have_many(:expenses).through(:month_expenses) }
   end
 
   describe "public methods" do

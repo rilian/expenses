@@ -16,7 +16,7 @@ class MonthExpense < ActiveRecord::Base
   validates_uniqueness_of :month_id, scope: :expense_id
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :month_id, :expense_id
+  attr_accessible :month_id, :expense_id, :sum_real, :desc
 
   # Model dictionaries, state machine
 

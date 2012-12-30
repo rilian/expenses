@@ -25,6 +25,7 @@ describe Expense do
     it { should allow_mass_assignment_of(:weight) }
 
     it { should have_many(:month_expenses).dependent(:destroy) }
+    it { should have_many(:months).through(:month_expenses) }
   end
 
   describe "public methods" do

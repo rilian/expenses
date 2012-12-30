@@ -10,6 +10,7 @@ class Expense < ActiveRecord::Base
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   has_many :month_expenses, dependent: :destroy, inverse_of: :expense
+  has_many :months, through: :month_expenses
 
   # Validations: presence > by type > validates
   validates_presence_of :name, :weight

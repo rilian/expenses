@@ -25,6 +25,8 @@ describe MonthExpense do
 
     it { should allow_mass_assignment_of(:month_id) }
     it { should allow_mass_assignment_of(:expense_id) }
+    it { should allow_mass_assignment_of(:sum_real) }
+    it { should allow_mass_assignment_of(:desc) }
 
     it { should belong_to(:month) }
     it { should belong_to(:expense) }
