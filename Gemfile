@@ -9,8 +9,6 @@ gem 'simple_form'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-gem 'nokogiri'
-
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
@@ -25,7 +23,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda'
 end
