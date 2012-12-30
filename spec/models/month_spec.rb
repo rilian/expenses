@@ -31,7 +31,6 @@ describe Month do
 
       it 'generates all month_expenses for self after create' do
         month = FactoryGirl.create(:month)
-        debugger
         month.expenses.map(&:id).should =~ Expense.all.map(&:id)
       end
     end
