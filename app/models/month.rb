@@ -4,7 +4,7 @@ class Month < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks
-  after_update :generate_month_expenses, if: Proc.new { |m| m.month_expenses.blank? }
+  after_create :generate_month_expenses, if: Proc.new { |m| m.month_expenses.blank? }
 
   # Default scopes, default values (e.g. self.per_page =)
   default_scope order('id DESC')

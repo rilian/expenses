@@ -24,5 +24,16 @@ describe Month do
   end
 
   describe "private methods" do
+    describe 'generate_month_expenses' do
+      before do
+        FactoryGirl.create_list(:expense, 2)
+      end
+
+      it 'generates all month_expenses for self after create' do
+        month = FactoryGirl.create(:month)
+        debugger
+        month.expenses.map(&:id).should =~ Expense.all.map(&:id)
+      end
+    end
   end
 end
