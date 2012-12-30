@@ -1,10 +1,10 @@
 class MonthsController < ApplicationController
   def index
-    @months = Month.includes(:month_expenses)
+    @months = Month.all
   end
 
   def show
-    @month = Month.find(params[:id])
+    @month = Month.includes(:expenses).find(params[:id])
   end
 
   def new
@@ -12,6 +12,8 @@ class MonthsController < ApplicationController
   end
 
   def create
+    @month = Month.new(params[:month])
+
     if @month.save
       redirect_to months_path
     else
@@ -20,7 +22,7 @@ class MonthsController < ApplicationController
   end
 
   def edit
-    @month = Month.find(params[:id])
+    @month = Month.includes(:expenses).find(params[:id])
   end
 
   def update

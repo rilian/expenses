@@ -3,9 +3,8 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all
   end
 
-
   def show
-    @expense = Expense.find(params[:id])
+    @expense = Expense.includes(:months).find(params[:id])
   end
 
   def new
