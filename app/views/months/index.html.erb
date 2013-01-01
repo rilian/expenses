@@ -17,24 +17,16 @@
   <% @months.each do |month| %>
       <tr>
         <td>
-          <p>
-            <%= month.id %>
-          </p>
+          <%= month.id %>
         </td>
         <td>
-          <p>
-            <%= link_to month.name, month_path(month) %>
-          </p>
+          <%= link_to month.name, month_path(month) %>
         </td>
         <td>
-          <p>
-            <%= month.month_expenses.sum('month_expenses.sum_real') %>
-          </p>
+          <%= month.month_expenses.sum('month_expenses.sum_real') %>
         </td>
         <td>
-          <p>
-            <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-primary' %>
-          </p>
+          <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-primary btn-mini' %>
         </td>
       </tr>
   <% end %>

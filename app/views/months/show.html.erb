@@ -15,19 +15,13 @@
   <% @month.month_expenses.each do |month_expense| %>
       <tr>
         <td>
-          <p>
-            <%= link_to month_expense.expense.name, expense_path(month_expense.expense) %>
-          </p>
+          <%= link_to month_expense.expense.name, expense_path(month_expense.expense) %>
         </td>
         <td>
-          <p>
-            <%= month_expense.sum_real %>
-          </p>
+          <%= month_expense.sum_real %>
         </td>
         <td>
-          <p>
-            <%= month_expense.desc %>
-          </p>
+          <%= month_expense.desc %>
         </td>
       </tr>
   <% end %>

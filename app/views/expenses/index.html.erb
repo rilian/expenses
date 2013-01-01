@@ -7,9 +7,8 @@
 <table class="table">
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Name</th>
     <th>Weight</th>
+    <th>Name</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -17,33 +16,21 @@
   <% @expenses.each do |expense| %>
       <tr>
         <td>
-          <p>
-            <%= expense.id %>
-          </p>
+          <%= expense.weight %>
         </td>
         <td>
-          <p>
-            <%= link_to expense.name, expense_path(expense) %>
-          </p>
+          <%= link_to expense.name, expense_path(expense) %>
         </td>
         <td>
-          <p>
-            <%= expense.weight %>
-          </p>
-        </td>
-        <td>
-          <p>
-            <%= link_to 'Edit', edit_expense_path(expense), class: 'btn btn-primary' %>
-          </p>
+          <%= link_to 'Edit', edit_expense_path(expense), class: 'btn btn-primary btn-mini' %>
         </td>
       </tr>
   <% end %>
   </tbody>
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Name</th>
     <th>Weight</th>
+    <th>Name</th>
     <th>Actions</th>
   </tr>
   </thead>
