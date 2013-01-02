@@ -1,0 +1,40 @@
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1', {packages: ['corechart']});
+  </script>
+
+  <% Expense.all.each do |expense| %>
+    <script type="text/javascript">
+      function drawVisualization<%= expense.id %>() {
+        // Create and populate the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['x', 'This year', 'Previous year'],
+          <% Month.limit(12).order('id DESC').reverse.each do |month| %>
+            ['<%= month.name.gsub(/\d+/, '') %>',
+              <%= MonthExpense.where(month_id: month.id, expense_id: expense.id).first.try(:sum_real) || 0 %>,
+              <%= MonthExpense.where(month_id: month.id-12, expense_id: expense.id).first.try(:sum_real) || 0 %>],
+          <% end %>
+        ]);
+
+        // Create and draw the visualization.
+        new google.visualization.LineChart(document.getElementById('visualization_<%= expense.id %>')).
+          draw(data, {curveType: "none",
+            width: 940, height: 500,
+            vAxis: {maxValue: 10},
+            chartArea:{left:50,top:30,width:880,height:400},
+            legend: {position: 'top', textStyle: {color: 'blue', fontSize: 16}}
+          }
+        );
+      }
+      google.setOnLoadCallback(drawVisualization<%= expense.id %>);
+    </script>
+  <% end %>
+
+</head>
+<body style="font-family: Arial;border: 0 none;">
+  <% Expense.all.each do |expense| %>
+    <h2><%= link_to expense.name, expense_path(expense) %></h2>
+    <div id="visualization_<%= expense.id %>" style="width: 940px; height: 550px;"></div>
+  <% end %>
+</body>
+</html>
