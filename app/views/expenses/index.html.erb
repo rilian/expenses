@@ -9,6 +9,7 @@
   <tr>
     <th>Weight</th>
     <th>Name</th>
+    <th>Active?</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -22,6 +23,9 @@
           <%= link_to expense.name, expense_path(expense) %>
         </td>
         <td>
+          <%= expense.is_active? ? 'yes' : 'no' %>
+        </td>
+        <td>
           <%= link_to 'Edit', edit_expense_path(expense), class: 'btn btn-primary btn-mini' %>
         </td>
       </tr>
@@ -31,6 +35,7 @@
   <tr>
     <th>Weight</th>
     <th>Name</th>
+    <th>Active?</th>
     <th>Actions</th>
   </tr>
   </thead>

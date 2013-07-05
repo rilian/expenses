@@ -36,7 +36,7 @@ class Month < ActiveRecord::Base
   # Generates needed month expenses
   #
   def generate_month_expenses
-    Expense.all.each do |expense|
+    Expense.active.each do |expense|
       MonthExpense.create(month_id: self.id, expense_id: expense.id)
     end
   end

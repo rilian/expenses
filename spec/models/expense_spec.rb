@@ -4,6 +4,8 @@ describe Expense do
   describe "database" do
     it { should have_db_column(:name).of_type(:string).with_options(null: false) }
     it { should have_db_column(:weight).of_type(:integer).with_options(null: false, default: 0) }
+    it { should have_db_column(:is_active).of_type(:boolean).with_options(null: false, default: true) }
+    it { should have_db_index(:is_active) }
   end
 
   describe "generators" do

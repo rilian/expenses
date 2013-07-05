@@ -11,18 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223110653) do
+ActiveRecord::Schema.define(:version => 20130705161606) do
 
-  create_table "expenses", :force => true do |t|
-    t.string  "name",                  :null => false
-    t.integer "weight", :default => 0, :null => false
-  end
-
-  create_table "month_expenses", :force => true do |t|
+  create_table "_month_expenses_old_20121224", :force => true do |t|
     t.integer "expense_id",                  :null => false
     t.integer "month_id",                    :null => false
     t.string  "desc",        :default => "", :null => false
+    t.integer "sum_planned", :default => 0,  :null => false
     t.integer "sum_real",    :default => 0,  :null => false
+  end
+
+  create_table "expenses", :force => true do |t|
+    t.string  "name",                        :null => false
+    t.integer "weight",    :default => 0,    :null => false
+    t.boolean "is_active", :default => true, :null => false
+  end
+
+  add_index "expenses", ["is_active"], :name => "index_expenses_on_is_active"
+
+  create_table "month_expenses", :force => true do |t|
+    t.integer "expense_id",                 :null => false
+    t.integer "month_id",                   :null => false
+    t.string  "desc",       :default => "", :null => false
+    t.integer "sum_real",   :default => 0,  :null => false
   end
 
   add_index "month_expenses", ["month_id", "expense_id"], :name => "index_month_expenses_on_month_id_and_expense_id", :unique => true

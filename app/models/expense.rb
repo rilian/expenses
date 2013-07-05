@@ -17,13 +17,15 @@ class Expense < ActiveRecord::Base
   validates_uniqueness_of :name
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :name, :weight
+  attr_accessible :name, :weight, :is_active
 
   # Model dictionaries, state machine
 
   # Scopes
   class << self
   end
+
+  scope :active, ->() { where(is_active: true) }
 
   # Other model methods
 

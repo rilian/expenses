@@ -1,6 +1,7 @@
 <%= simple_form_for @expense, html: { class: 'form-horizontal' } do |f| %>
     <%= f.input :name %>
     <%= f.input :weight, label: "Weight" %>
+    <%= f.input :is_active, label: "Active?" %>
     <br/>
     <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
