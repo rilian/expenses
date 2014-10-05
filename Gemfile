@@ -16,7 +16,7 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'byebug'
   gem 'thin'
   gem 'factory_girl_rails'
 end
