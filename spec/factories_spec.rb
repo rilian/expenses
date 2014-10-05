@@ -5,8 +5,8 @@ FactoryGirl.factories.map(&:name).each do |factory_name|
     it 'should be valid' do
       object = FactoryGirl.build(factory_name.to_sym)
       object.save
-      object.errors.full_messages.should == []
-      object.should be_valid
+      expect(object.errors.full_messages).to eq []
+      expect(object).to be_valid
     end
   end
 end

@@ -2,22 +2,22 @@ require 'spec_helper'
 
 describe Month do
   describe "database" do
-    it { should have_db_column(:name).of_type(:string).with_options(null: false) }
-    it { should have_db_column(:result).of_type(:text).with_options(null: false, default: '') }
+    it { is_expected.to have_db_column(:name).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:result).of_type(:text).with_options(null: false, default: '') }
   end
 
   describe "generators" do
   end
 
   describe "validators" do
-    it { should validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:name) }
 
-    it { should allow_mass_assignment_of(:name) }
-    it { should allow_mass_assignment_of(:result) }
-    it { should allow_mass_assignment_of(:month_expenses_attributes) }
+    it { is_expected.to allow_mass_assignment_of(:name) }
+    it { is_expected.to allow_mass_assignment_of(:result) }
+    it { is_expected.to allow_mass_assignment_of(:month_expenses_attributes) }
 
-    it { should have_many(:month_expenses).dependent(:destroy) }
-    it { should have_many(:expenses).through(:month_expenses) }
+    it { is_expected.to have_many(:month_expenses).dependent(:destroy) }
+    it { is_expected.to have_many(:expenses).through(:month_expenses) }
   end
 
   describe "public methods" do
@@ -31,7 +31,7 @@ describe Month do
 
       it 'generates all month_expenses for self after create' do
         month = FactoryGirl.create(:month)
-        month.expenses.map(&:id).should =~ Expense.all.map(&:id)
+        expect(month.expenses.map(&:id)).to match Expense.all.map(&:id)
       end
     end
   end

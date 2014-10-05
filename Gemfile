@@ -1,13 +1,9 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.19'
 
 gem 'sqlite3'
-
 gem 'jquery-rails'
 gem 'simple_form'
-
-gem 'capistrano'
-gem 'rvm-capistrano'
 
 group :assets do
   gem 'sass-rails'
@@ -17,13 +13,12 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'thin'
   gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'rspec-rails'
-  gem 'database_cleaner'
+  gem 'database_rewinder'
   gem 'shoulda'
 end
 
