@@ -8,12 +8,13 @@
       function drawVisualization<%= expense.id %>() {
         // Create and populate the data table.
         var data = google.visualization.arrayToDataTable([
-          ['x', <%= Time.now.year.to_s %>, <%= (Time.now - 1.years).year.to_s %>, <%= (Time.now - 2.years).year.to_s %>],
+          ['x', '<%= Time.now.year.to_s %>', '<%= (Time.now - 1.years).year.to_s %>', '<%= (Time.now - 2.years).year.to_s %>', '<%= (Time.now - 3.years).year.to_s %>'],
           <% Month.limit(12).order('id DESC').reverse.each do |month| %>
             ['<%= month.name.gsub(/\d+/, '') %>',
               <%= MonthExpense.where(month_id: month.id, expense_id: expense.id).first.try(:sum_real) || 0 %>,
               <%= MonthExpense.where(month_id: month.id-12, expense_id: expense.id).first.try(:sum_real) || 0 %>,
-              <%= MonthExpense.where(month_id: month.id-24, expense_id: expense.id).first.try(:sum_real) || 0 %>
+              <%= MonthExpense.where(month_id: month.id-24, expense_id: expense.id).first.try(:sum_real) || 0 %>,
+              <%= MonthExpense.where(month_id: month.id-36, expense_id: expense.id).first.try(:sum_real) || 0 %>
             ],
           <% end %>
         ]);
