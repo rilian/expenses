@@ -32,10 +32,9 @@
       google.setOnLoadCallback(drawVisualization<%= expense.id %>);
     </script>
   <% end %>
-
 </head>
 <body style="font-family: Arial;border: 0 none;">
-  <% Expense.all.each do |expense| %>
+  <% Expense.ordered.all.each do |expense| %>
     <h2><%= link_to expense.name, expense_path(expense) %></h2>
     <div id="visualization_<%= expense.id %>" style="width: 940px; height: 550px;"></div>
   <% end %>
