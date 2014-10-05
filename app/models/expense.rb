@@ -1,6 +1,4 @@
 class Expense < ActiveRecord::Base
-  default_scope order('weight DESC')
-
   has_many :month_expenses, dependent: :destroy, inverse_of: :expense
   has_many :months, through: :month_expenses
 
@@ -9,5 +7,6 @@ class Expense < ActiveRecord::Base
 
   attr_accessible :name, :weight, :is_active
 
+  scope :ordered, ->() { order('weight DESC') }
   scope :active, ->() { where(is_active: true) }
 end

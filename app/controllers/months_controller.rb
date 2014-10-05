@@ -1,10 +1,10 @@
 class MonthsController < ApplicationController
   def index
-    @months = Month.all
+    @months = Month.ordered
   end
 
   def show
-    @month = Month.includes(:expenses).find(params[:id])
+    @month = Month.ordered.includes(:expenses).find(params[:id])
   end
 
   def new
