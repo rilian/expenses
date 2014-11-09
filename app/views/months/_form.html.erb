@@ -14,7 +14,7 @@
       </tr>
       </thead>
       <tbody>
-        <%= f.simple_fields_for :month_expenses do |month_expense| %>
+        <%= f.simple_fields_for :month_expenses, @month.month_expenses.joins(:expense).order('expenses.weight DESC') do |month_expense| %>
         <tr>
           <td><%= month_expense.object.expense.name %></td>
           <td><%= month_expense.input :sum_real, as: :integer, label: false %></td>

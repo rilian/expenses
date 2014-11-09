@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @month.month_expenses.each do |month_expense| %>
+  <% @month.month_expenses.joins(:expense).order('expenses.weight DESC').each do |month_expense| %>
       <tr>
         <td>
           <%= link_to month_expense.expense.name, expense_path(month_expense.expense) %>
