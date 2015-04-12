@@ -1,10 +1,10 @@
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript">
-    google.load('visualization', '1', {packages: ['corechart']});
+    google.load('visualization', '1.0', {packages: ['corechart']});
   </script>
 
+  <script type="text/javascript">
   <% Expense.all.each do |expense| %>
-    <script type="text/javascript">
       function drawVisualization<%= expense.id %>() {
         // Create and populate the data table.
         var data = google.visualization.arrayToDataTable([
@@ -30,8 +30,8 @@
         );
       }
       google.setOnLoadCallback(drawVisualization<%= expense.id %>);
-    </script>
   <% end %>
+  </script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
   <% Expense.ordered.all.each do |expense| %>
