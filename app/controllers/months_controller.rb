@@ -28,6 +28,11 @@ class MonthsController < ApplicationController
   def update
     @month = Month.find(params[:id])
     if @month.update_attributes(params[:month])
+      @month.month_expenses.each do |me|
+        me.calculate_sum_real
+        me.save
+      end
+
       redirect_to month_path(@month)
     else
       render :edit
