@@ -4,7 +4,7 @@
   </script>
 
   <script type="text/javascript">
-  <% Expense.all.each do |expense| %>
+  <% Expense.active.ordered.each do |expense| %>
       function drawVisualization<%= expense.id %>() {
         // Create and populate the data table.
         var data = google.visualization.arrayToDataTable([
@@ -35,7 +35,7 @@
   </script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
-  <% Expense.ordered.all.each do |expense| %>
+  <% Expense.active.ordered.all.each do |expense| %>
     <h2><%= link_to expense.name, expense_path(expense) %></h2>
     <div id="visualization_<%= expense.id %>" style="width: 940px; height: 550px;"></div>
   <% end %>
